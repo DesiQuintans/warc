@@ -405,3 +405,39 @@ fold <- function(vec, n = 2) {
         others = ifelse(length(vec) - n > 1, "others", "other")
     ))
 }
+
+
+
+#' Alias for `any(!(...))`
+#'
+#' `any(...)` returns `TRUE` if anything in `...` is `TRUE`, so `any_false(...)` returns
+#' `TRUE` if anything in `...` is `FALSE`.
+#'
+#' This function exists to avoid confusion when negating `any()`;
+#' `any(!c(TRUE, FALSE)) == TRUE`, but `!any(c(TRUE, FALSE)) == FALSE`, and the difference
+#' is which part of the expression you negate. In many cases, you want the former because
+#' you are testing whether anything in the vector is `FALSE`, and that's what this
+#' function does.
+#'
+#' @param ... (Vectors) Zero or more logical vectors.
+#' @param na.rm (Logical) If `TRUE`, `NA` values are removed before the result is computed.
+#'
+#' @return Logical vector.
+#' @export
+#'
+#' @examples
+#' any_false(c(TRUE, TRUE))
+#' #> [1] FALSE
+#'
+#' any_false(c(FALSE, FALSE))
+#' #> [1] TRUE
+#'
+#' any_false(c(TRUE, FALSE))
+#' #> [1] TRUE
+#'
+#' @section Authors:
+#' - Desi Quintans (<http://www.desiquintans.com>)
+#' @md
+any_false <- function(..., na.rm = FALSE) {
+    base::any(!(...), na.rm = na.rm)
+}
