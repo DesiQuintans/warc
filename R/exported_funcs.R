@@ -464,12 +464,12 @@ any_false <- function(..., na.rm = FALSE) {
 #'
 #' report_diff(v1, v2)
 #'
-#' #>     pairs count
-#' #> 1  l == r     4
-#' #> 2  l != r     3
-#' #> 3  3 != 5     1
-#' #> 4  5 != 3     1
-#' #> 5 NA != 7     1
+#' #>         pairs count
+#' #> 1      l == r     4
+#' #> 2      l != r     3
+#' #> 3  `3` != `5`     1
+#' #> 4  `5` != `3`     1
+#' #> 5 `NA` != `7`     1
 #'
 #' report_diff(v1, v2, full = FALSE)
 #'
@@ -498,7 +498,8 @@ report_diff <- function(l, r, full = TRUE) {
     if (full == FALSE) {
         return(overall)
     } else {
-        pairs <- paste(l[diff], r[diff], sep = " != ")
+        pairs <- paste(paste0("`", l[diff], "`"),
+                       paste0("`", r[diff], "`"),  sep = " != ")
         result <- as.data.frame(table(pairs), responseName = "count")
 
         full_output <- rbind(overall, result)

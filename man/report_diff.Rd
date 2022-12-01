@@ -35,12 +35,12 @@ v2 <- c(1, 2, 5, 4, 3, NA, 7)
 
 report_diff(v1, v2)
 
-#>     pairs count
-#> 1  l == r     4
-#> 2  l != r     3
-#> 3  3 != 5     1
-#> 4  5 != 3     1
-#> 5 NA != 7     1
+#>         pairs count
+#> 1      l == r     4
+#> 2      l != r     3
+#> 3  `3` != `5`     1
+#> 4  `5` != `3`     1
+#> 5 `NA` != `7`     1
 
 report_diff(v1, v2, full = FALSE)
 
