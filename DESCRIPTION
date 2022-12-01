@@ -1,22 +1,23 @@
 Package: warc
-Type: WARC (Westmead Applied Research Centre) toolkit
+Type: Package
 Title: Convenience Functions for Cleaning and Analysing Medical Data
 Version: 0.1.0
 Author: Desi Quintans
 Maintainer: Desi Quintans <science@desiquintans.com>
-Description: This package contains functions that WARC statisticians use to clean and 
-    analyse medical data.
+Description: This package contains functions for working with medical data.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 4.2.0)
 Imports:
+    boot (>= 1.3),
     cli (>= 3.4.0),
+    datasets (>= 4.2.0),
     glue (>= 1.6.0),
-    Hmisc (>= 4.7),
     labelled (>= 2.10.0),
     magrittr (>= 1.5),
+    methods (>= 4.2.0),
     purrr (>= 0.3.0),
-    stringr (>= 1.3.0)
-Suggests:
+    stringr (>= 1.3.0),
     usethis (>= 1.5.0)
+RoxygenNote: 7.2.2
