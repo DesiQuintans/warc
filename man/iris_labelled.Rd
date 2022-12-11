@@ -5,19 +5,21 @@
 \alias{iris_labelled}
 \title{The classic Iris dataset, with variable labels}
 \format{
-## `iris_labelled`
+\subsection{\code{iris_labelled}}{
+
 A data frame with 150 rows and 5 columns:
 \describe{
-  \item{Sepal.Length}{Length of sepals.}
-  \item{Sepal.Width}{Width of sepals.}
-  \item{Petal.Length}{Length of petals.}
-  \item{Petal.Width}{Width of petals.}
-  \item{Species}{Species of iris: setosa, versicolor, virginica}
-  ...
+\item{Sepal.Length}{Length of sepals.}
+\item{Sepal.Width}{Width of sepals.}
+\item{Petal.Length}{Length of petals.}
+\item{Petal.Width}{Width of petals.}
+\item{Species}{Species of iris: setosa, versicolor, virginica}
+...
+}
 }
 }
 \source{
-R `datasets` package
+R \code{datasets} package
 }
 \usage{
 iris_labelled
