@@ -186,3 +186,48 @@ copy_definition <- function(to, from, ...) {
 
     return(out)
 }
+
+
+
+#' One-step evaluation and labelling with Hmisc
+#'
+#' Labelling with [Hmisc::label()] takes two steps that can't be pipelined. This function
+#' does them both.
+#'
+#' @param expr (Expression) An expression to evaluate.
+#' @param label (Character) The label to apply to the output.
+#'
+#' @return The evaluated result of `expr`, labelled with `label`.
+#' @export
+#'
+#' @examples
+#' with_label(1:10 < 5,
+#'            "This number is smaller than 5.")
+#'
+#' #> This number is smaller than 5.
+#' #> [1]  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+#'
+#' add_to_iris <-
+#'     iris |>
+#'     dplyr::mutate(is_setosa = with_label(Species == "setosa",
+#'                                          "This is an I. setosa record."))
+#'
+#' str(add_to_iris$is_setosa)
+#'
+#' #> labelled' logi [1:150] TRUE TRUE TRUE TRUE TRUE TRUE ...
+#' #> - attr(*, "label")= chr "This is an I. setosa record."
+#'
+#' # You can also pipe into with_label()
+#' 1:10 |> with_label("A vector of 10 numbers.") |> str()
+#'
+#' #> labelled' int [1:10] 1 2 3 4 5 6 7 8 9 10
+#' #> - attr(*, "label")= chr "A vector of 10 numbers."
+#'
+with_label <- function(expr, label) {
+    out <- eval(expr)
+
+    Hmisc::label(out) <- label
+
+    return(out)
+}
+

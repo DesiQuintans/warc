@@ -2,4 +2,5 @@
 
 export(copy_definition)
 export(shrink_redcap_cols)
+export(with_label)
 importFrom(magrittr,"%>%")
