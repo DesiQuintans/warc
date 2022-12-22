@@ -172,10 +172,16 @@ copy_definition <- function(to, from, ...) {
         return(out)
     }
 
-    out <- factor(x = to,
-                  levels = levels(from),
-                  ordered = is.ordered(from),
-                  ...)
+    # Only turn `to` into a factor if `from` is one to begin with.
+    if (is.factor(from)) {
+        out <- factor(x = to,
+                      levels = levels(from),
+                      ordered = is.ordered(from),
+                      ...)
+    } else {
+        out <- to
+    }
+
 
     # Only apply a label to the new vector if one existed in the old one.
     # This is because labelling adds the "labelled" class to the vector as well,
