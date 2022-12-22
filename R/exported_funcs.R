@@ -199,10 +199,7 @@ copy_definition <- function(to, from, ...) {
 
 
 
-#' One-step evaluation and labelling with Hmisc
-#'
-#' Labelling with [Hmisc::label()] takes two steps that can't be pipelined. This function
-#' does them both.
+#' One-step evaluation and labelling
 #'
 #' @param expr (Expression) An expression to evaluate.
 #' @param label (Character) The label to apply to the output.
@@ -236,6 +233,7 @@ copy_definition <- function(to, from, ...) {
 with_label <- function(expr, label) {
     out <- eval(expr)
 
+    # attr(out, "label") <- label
     Hmisc::label(out) <- label
 
     return(out)

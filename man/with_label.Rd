@@ -2,7 +2,7 @@
 % Please edit documentation in R/exported_funcs.R
 \name{with_label}
 \alias{with_label}
-\title{One-step evaluation and labelling with Hmisc}
+\title{One-step evaluation and labelling}
 \usage{
 with_label(expr, label)
 }
@@ -15,8 +15,7 @@ with_label(expr, label)
 The evaluated result of \code{expr}, labelled with \code{label}.
 }
 \description{
-Labelling with \code{\link[Hmisc:label]{Hmisc::label()}} takes two steps that can't be pipelined. This function
-does them both.
+One-step evaluation and labelling
 }
 \examples{
 with_label(1:10 < 5,
