@@ -2,7 +2,7 @@
 % Please edit documentation in R/exported_funcs.R
 \name{copy_definition}
 \alias{copy_definition}
-\title{Copy factor levels, ordering, and labels between vectors}
+\title{Copy factor levels, ordering, and labels from one vector to another}
 \usage{
 copy_definition(to, from, ...)
 }
@@ -14,22 +14,15 @@ copy_definition(to, from, ...)
 \item{...}{(...) Additional arguments that will be passed to \code{\link[=factor]{factor()}}.}
 }
 \value{
-A version of \code{to} with levels, level ordering, and labels (if any).
+A factorised version of \code{to} with levels, level ordering, and labels (if any).
 }
 \description{
-This function supports vectors and dataframes that were labelled with
-\code{\link[Hmisc:label]{Hmisc::label()}}, \code{\link[haven:labelled]{haven::labelled()}}, or \code{\link[labelled:var_label]{labelled::var_label()}}.
+This function supports vectors that were labelled with either \code{\link[Hmisc:label]{Hmisc::label()}} or
+\code{\link[haven:labelled]{haven::labelled()}}.
 }
 \details{
 Labels will only be applied to \code{to} if they existed in \code{from}.
 }
-\section{Authors}{
-
-\itemize{
-\item Desi Quintans (\url{http://www.desiquintans.com})
-}
-}
-
 \examples{
 # ---- Labelled with Hmisc ----
 
@@ -90,9 +83,5 @@ copy_definition(fac_new_unord, fac_old_unord)
 
 #> [1] Curtain  Keyboard Curtain  Cat      Cat      Keyboard
 #> Levels: Cat Curtain Keyboard
-
-# ---- Non-factor vectors ----
-
-copy_definition(iris$Petal.Length, warc::iris_labelled$Petal.Length)
 
 }

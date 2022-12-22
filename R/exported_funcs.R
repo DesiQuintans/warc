@@ -188,6 +188,10 @@ copy_definition <- function(to, from, ...) {
     # which some functions (e.g. skimr::skim()) do not know how to handle.
     if ("labelled" %in% class(from)) {
         Hmisc::label(out) <- Hmisc::label(from)
+    } else if (is.null(attributes(from)$label) == FALSE) {
+        # labelled package does not change the vector's class, but it does add a 'label'
+        # attribute to the vector.
+        attr(out, "label") <-  attr(from, "label")
     }
 
     return(out)
