@@ -4,12 +4,15 @@
 \alias{warc_dirs}
 \title{Generate shortcuts to folders in WARC's standardised folder structure}
 \usage{
-warc_dirs(rds_folder)
+warc_dirs(rds_folder, quiet = FALSE)
 }
 \arguments{
 \item{rds_folder}{(Character) The full path to your personal working project directory
 on the Remote Data Store. This is usually a folder that you've created inside
 \verb{/6. Analysis/Analysis programs/} or \verb{/7. Analysis Validation/Validation programs/}.}
+
+\item{quiet}{(Logical) If \code{FALSE} (default), print the shortcuts and their paths. This
+is good for reproducibility.}
 }
 \value{
 A named list of directory paths to key folders on the RDS. Use \code{\link[=file.path]{file.path()}} to build a path using these shortcuts (see the examples).
