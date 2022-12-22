@@ -3,5 +3,6 @@
 export(copy_dataframe_labels)
 export(copy_definition)
 export(shrink_redcap_cols)
+export(warc_dirs)
 export(with_label)
 importFrom(magrittr,"%>%")
