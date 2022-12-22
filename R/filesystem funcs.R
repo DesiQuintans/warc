@@ -29,6 +29,8 @@
 #' @param rds_folder (Character) The full path to your personal working project directory
 #'     on the Remote Data Store. This is usually a folder that you've created inside
 #'     `/6. Analysis/Analysis programs/` or `/7. Analysis Validation/Validation programs/`.
+#' @param quiet (Logical) If `FALSE` (default), print the shortcuts and their paths. This
+#'     is good for reproducibility.
 #'
 #' @details
 #' This function created a named list of shortcuts. The names of the shortcuts are:
@@ -88,7 +90,7 @@
 #' # my_hist <- hist(islands)
 #' # saveRDS(my_hist, file.path(rds$out, "islands histogram.rds"))
 #' }
-warc_dirs <- function(rds_folder) {
+warc_dirs <- function(rds_folder, quiet = FALSE) {
     if (dir.exists(rds_folder) == FALSE) {
         stop(
             glue::glue("The folder '{rds_folder}' does not exist. \n
@@ -124,5 +126,25 @@ warc_dirs <- function(rds_folder) {
         dir.create(rds$out)
     }
 
-    return(rds)
+    if (quiet == FALSE) {
+        truncate_dir <- function(path, root) {
+            return(stringr::str_replace(path, root, "..."))
+        }
+
+        print(glue::glue("
+            Shortcuts to RDS folders:
+
+            $ root         {rds$root}
+            $ rawdata      {truncate_dir(rds$rawdata, rds$root)}
+            $ derived      {truncate_dir(rds$derived, rds$root)}
+            $ analysis     {truncate_dir(rds$analysis, rds$root)}
+            $ validation   {truncate_dir(rds$validation, rds$root)}
+            $ me           {truncate_dir(rds$me, rds$root)}
+            $ out          {truncate_dir(rds$out, rds$root)}
+            $ report       {truncate_dir(rds$report, rds$root)}
+            "
+        ))
+    }
+
+    return(invisible(rds))
 }
