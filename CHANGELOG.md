@@ -6,6 +6,7 @@
     - `shrink_redcap_cols()`
     - `copy_definition()`
     - `with_label()`
+    - `copy_dataframe_labels()`
 - Changed
 - Fixed
 - Deprecated

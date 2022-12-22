@@ -13,6 +13,7 @@ Imports:
     datasets (>= 4.2.0),
     desiderata (>= 0.43.0),
     dplyr (>= 1.0.0),
+    glue (>= 1.6.0),
     haven (>= 2.5.0),
     Hmisc (>= 4.7),
     labelled (>= 2.10.0),
