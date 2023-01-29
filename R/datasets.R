@@ -15,6 +15,7 @@ make_iris_labelled_hmisc <- function() {
     usethis::use_data(iris_labelled_hmisc, overwrite = TRUE)
 }
 
+# Same thing, but does the labelling with haven.
 make_iris_labelled_haven <- function() {
     iris_labelled_haven <- datasets::iris
 
@@ -43,7 +44,7 @@ make_iris_labelled_haven <- function() {
     usethis::use_data(iris_labelled_haven, overwrite = TRUE)
 }
 
-
+# Same thing, but does the labelling with labelled.
 make_iris_labelled_labelled <- function() {
     iris_labelled_labelled <- datasets::iris
 
