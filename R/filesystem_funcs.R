@@ -50,7 +50,7 @@
 #' @export
 #'
 #' @examples
-#' \preformatted{
+#' \dontrun{
 #' rds <- warc_dirs("E:/PRJ-Clinical_Trial/6. Analysis/Analysis programs/myname")
 #'
 #' rds$root
