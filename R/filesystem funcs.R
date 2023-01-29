@@ -96,7 +96,9 @@ warc_dirs <- function(rds_folder, quiet = FALSE) {
             glue::glue("The folder '{rds_folder}' does not exist. \n
                         The 'rds_folder' argument should point to your working folder on
                         the Remote Data Store, which should be mapped to a drive. \n
-                        For example, 'E:/PRJ-Example_Project/6. Analysis/myscripts'.")
+                        For example, 'E:/PRJ-Example_Project/6. Analysis/myscripts'.\n
+                        Did you just start up this computer? Try opening the RDS folder in
+                        Explorer/Finder to activate it, and try the script again.")
         )
     }
 
