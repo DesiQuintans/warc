@@ -1,7 +1,7 @@
 Package: warc
 Type: Package
 Title: Convenience Functions for Cleaning and Analysing Medical Data
-Version: 0.1.0
+Version: 0.2.0
 Author: Desi Quintans
 Maintainer: Desi Quintans <science@desiquintans.com>
 Description: This package contains functions for working with medical data.
