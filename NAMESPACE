@@ -2,7 +2,10 @@
 
 export(copy_dataframe_labels)
 export(copy_definition)
+export(fig_number)
+export(map_number)
 export(shrink_redcap_cols)
+export(tbl_number)
 export(warc_dirs)
 export(with_label)
 importFrom(magrittr,"%>%")
