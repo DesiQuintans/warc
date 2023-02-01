@@ -13,12 +13,16 @@ fig_number(i = NULL)
 map_number(i = NULL)
 }
 \arguments{
-\item{i}{(Character) Keywords that control which number is printed.
+\item{i}{(\code{NULL} or Numeric)
 \itemize{
-\item An empty argument or anything \strong{not} in this keyword list will add 1 to the number.
-\item To return the current item number, use \code{"curr"} or \code{"this"}.
-\item To return the last item number, use \code{"prev"} or \code{"last"}.
-\item To return the next item number, use \code{"next"}.
+\item To increment the internal counter, pass \code{NULL} or skip \code{i} (default).
+\item Otherwise, to 'look around' at the item numbers \strong{without} incrementing the counter,
+pass a number. For example:
+\itemize{
+\item \code{i = 0} returns the current item number,
+\item \code{i = -1} returns the previous one, and
+\item \code{i = +3} returns the number 3 items ahead.
+}
 }}
 }
 \value{
@@ -26,7 +30,11 @@ A Character vector of length one.
 }
 \description{
 These functions insert caption numbers ("Table 1", "Figure 1", etc.) that automatically
-increment every time the function is called.
+increment every time the function is called. Note that repeated runs of the same code
+will not have the same number; if you're troubleshooting your table and keep running
+its code, then the table number will keep ticking up. \strong{That's perfectly okay!} When
+you restart R and source the code (or if you're knitting a RMarkdown document that uses
+this auto-numbering), then the numbers will be correct in the output.
 }
 \details{
 Each function stores its own count, so use the correct function for the
@@ -42,32 +50,40 @@ correct item type.
 
 }}
 \examples{
-my_table_caption <- paste(tbl_number(), "Summary statistics for iris petal lengths.")
+# glue::glue() is strongly suggested.
+my_table_caption <- glue::glue("{tbl_number()}. Summary statistics for iris petal lengths.")
 my_table_caption
-#> [1] "Table 1. Summary statistics for iris petal lengths."
+#> "Table 1. Summary statistics for iris petal lengths."
 
-another_table <- paste(tbl_number(), "Another table.")
+# paste0() is fine too, though.
+another_table <- paste0(tbl_number(), ". Another table.")
 another_table
 #> [1] "Table 2. Another table."
 
 # What is the current table number?
-tbl_number("curr")
-#> [1] "Table 2."
+tbl_number(0)
+#> [1] "Table 2"
 
 # What was the table number before this one?
-tbl_number("prev")
-#> [1] "Table 1."
+tbl_number(-1)
+#> [1] "Table 1"
 
 # What is the number of the next table?
-tbl_number("next")
-#> [1] "Table 3."
+tbl_number(+1)
+#> [1] "Table 3"
+
+# What is the number of the table 10 items from now?
+tbl_number(+10)
+#> [1] "Table 12"
 
 # Each autonumber function tracks its own count.
 fig_number()
-#> [1] "Figure 1."
+#> [1] "Figure 1"
 
 map_number()
+#> [1] "Map 1"
+
 map_number()
-#> [1] "Map 2."
+#> [1] "Map 2"
 
 }
