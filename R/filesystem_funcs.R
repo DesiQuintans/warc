@@ -77,6 +77,12 @@
 #' rds$report
 #' ## [1] "E:/PRJ-Clinical_Trial/8. Statistical Report"
 #'
+#' rds$idsmc
+#' ## [1] "E:/PRJ-Clinical_Trial/4. IDSMC"
+#'
+#' rds$idsmc_rprt
+#' ## [1] "E:/PRJ-Clinical_Trial/4. IDSMC/IDSMC reports"
+#'
 #' # -------------------------------------------------------------------------
 #'
 #' # Example 1: Loading a CSV from the raw data folder
@@ -114,7 +120,9 @@ warc_dirs <- function(rds_folder, quiet = FALSE) {
         validation = file.path(remote_root, "7. Analysis Validation/Validation programs"),
         me = rds_folder,
         out = file.path(rds_folder, "_output"),
-        report = file.path(remote_root, "8. Statistical Report")
+        report = file.path(remote_root, "8. Statistical Report"),
+        idsmc = file.path(remote_root, "4. IDSMC"),
+        idsmc_rprt = file.path(remote_root, "4. IDSMC/IDSMC reports"),
     )
 
     if (dir.exists(rds$rawdata) == FALSE) {
@@ -144,6 +152,8 @@ warc_dirs <- function(rds_folder, quiet = FALSE) {
             $ me           {truncate_dir(rds$me, rds$root)}
             $ out          {truncate_dir(rds$out, rds$root)}
             $ report       {truncate_dir(rds$report, rds$root)}
+            $ idsmc        {truncate_dir(rds$idsmc, rds$root)}
+            $ idsmc_rprt   {truncate_dir(rds$idsmc_rprt, rds$root)}
             "
         ))
     }

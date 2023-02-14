@@ -82,6 +82,12 @@ rds$out
 rds$report
 ## [1] "E:/PRJ-Clinical_Trial/8. Statistical Report"
 
+rds$idsmc
+## [1] "E:/PRJ-Clinical_Trial/4. IDSMC"
+
+rds$idsmc_rprt
+## [1] "E:/PRJ-Clinical_Trial/4. IDSMC/IDSMC reports"
+
 # -------------------------------------------------------------------------
 
 # Example 1: Loading a CSV from the raw data folder
