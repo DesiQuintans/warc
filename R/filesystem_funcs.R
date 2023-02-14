@@ -108,7 +108,7 @@ warc_dirs <- function(rds_folder, quiet = FALSE) {
         )
     }
 
-    remote_root <- sub(pattern = "^(.*?)/(6. Analysis|7. Analysis Validation).*?$",
+    remote_root <- sub(pattern = "^(.*?)/(4. IDSMC|6. Analysis|7. Analysis Validation).*?$",
                        replacement = "\\1",
                        x = rds_folder)
 
@@ -122,7 +122,7 @@ warc_dirs <- function(rds_folder, quiet = FALSE) {
         out = file.path(rds_folder, "_output"),
         report = file.path(remote_root, "8. Statistical Report"),
         idsmc = file.path(remote_root, "4. IDSMC"),
-        idsmc_rprt = file.path(remote_root, "4. IDSMC/IDSMC reports"),
+        idsmc_rprt = file.path(remote_root, "4. IDSMC/IDSMC reports")
     )
 
     if (dir.exists(rds$rawdata) == FALSE) {
@@ -138,7 +138,7 @@ warc_dirs <- function(rds_folder, quiet = FALSE) {
 
     if (quiet == FALSE) {
         truncate_dir <- function(path, root) {
-            return(stringr::str_replace(path, root, "..."))
+            return(stringr::str_replace(path, stringr::fixed(root), "..."))
         }
 
         print(glue::glue("
