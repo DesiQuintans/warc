@@ -1,4 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^warc_existing_code$
+^_obsolete$
 CHANGELOG.md
