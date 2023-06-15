@@ -4,7 +4,7 @@
 # Creates an enclosing environment (closure.___number) that stores a `running_count`
 # variable, which is available to the function that is enclosed inside.
 
-closure.tblnumber <- function() {
+closure.autonumber <- function(label) {
     running_count <- 0
 
     f <- function(i = NULL) {
@@ -16,57 +16,25 @@ closure.tblnumber <- function() {
             running_count <<- running_count + 1
         }
 
-        return(paste0("Table ", running_count))
+        return(paste(label, running_count))
     }
 
     return(f)
 }
 
-closure.fignumber <- function() {
-    running_count <- 0
-
-    f <- function(i = NULL) {
-        if (is.numeric(i)) {
-            # Passing a number doesn't increment the internal counter.
-            running_count <- running_count + round(i, 0)
-        } else {
-            # Any non-numeric value will increment the counter.
-            running_count <<- running_count + 1
-        }
-
-        return(paste0("Figure ", running_count))
-    }
-
-    return(f)
-}
-
-closure.mapnumber <- function() {
-    running_count <- 0
-
-    f <- function(i = NULL) {
-        if (is.numeric(i)) {
-            # Passing a number doesn't increment the internal counter.
-            running_count <- running_count + round(i, 0)
-        } else {
-            # Any non-numeric value will increment the counter.
-            running_count <<- running_count + 1
-        }
-
-        return(paste0("Map ", running_count))
-    }
-
-    return(f)
-}
 
 
 #' Auto-numbering of tables, figures, and maps
 #'
 #' These functions insert caption numbers ("Table 1", "Figure 1", etc.) that automatically
-#' increment every time the function is called. Note that repeated runs of the same code
-#' will not have the same number; if you're troubleshooting your table and keep running
-#' its code, then the table number will keep ticking up. **That's perfectly okay!** When
-#' you restart R and source the code (or if you're knitting a RMarkdown document that uses
-#' this auto-numbering), then the numbers will be correct in the output.
+#' increment every time the function is called. Backwards- and forwards-referencing are
+#' also supported.
+#'
+#' Since the auto-number increments every time the function is called, this means that
+#' if you keep running the same table repeatedly, then its table number will keep ticking
+#' up. **That's perfectly okay!** When you restart R and source the code (or if you're
+#' knitting a RMarkdown document that uses this auto-numbering), then the numbers will be
+#' correct in the output.
 #'
 #' @param i (`NULL` or Numeric)
 #' - To increment the internal counter, pass `NULL` or skip `i` (default).
@@ -88,15 +56,13 @@ closure.mapnumber <- function() {
 #' @export
 #'
 #' @examples
-#' # glue::glue() is strongly suggested.
-#' my_table_caption <- glue::glue("{tbl_number()}. Summary statistics for iris petal lengths.")
-#' my_table_caption
-#' #> "Table 1. Summary statistics for iris petal lengths."
+#' # Assembling a table caption using base R's paste():
+#' paste0(tbl_number(), ". My first table.")
+#' #> [1] "Table 1. My first table."
 #'
-#' # paste0() is fine too, though.
-#' another_table <- paste0(tbl_number(), ". Another table.")
-#' another_table
-#' #> [1] "Table 2. Another table."
+#' # Assembling a table caption using base R's sprintf():
+#' sprintf("%s. My second table", tbl_number())
+#' #> [1] "Table 2. My second table."
 #'
 #' # What is the current table number?
 #' tbl_number(0)
@@ -124,15 +90,19 @@ closure.mapnumber <- function() {
 #' map_number()
 #' #> [1] "Map 2"
 #'
-tbl_number <- closure.tblnumber()
+tbl_number <- closure.autonumber("Table")
 
 #' @describeIn tbl_number
 #' Auto-numbering of Figures.
 #' @export
-fig_number <- closure.fignumber()
+fig_number <- closure.autonumber("Figure")
 
 #' @describeIn tbl_number
 #' Auto-numbering of Maps.
 #' @export
-map_number <- closure.mapnumber()
+map_number <- closure.autonumber("Map")
 
+#' @describeIn tbl_number
+#' Auto-numbering of Appendices.
+#' @export
+appx_number <- closure.autonumber("Appendix")

@@ -1,7 +1,7 @@
 Package: warc
 Type: Package
 Title: Convenience Functions for Cleaning and Analysing Medical Data
-Version: 0.2.0
+Version: 1.0.0
 Author: Desi Quintans
 Maintainer: Desi Quintans <science@desiquintans.com>
 Description: This package contains functions for working with medical data.
@@ -10,18 +10,14 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.4.0)
 Imports:
-    cli,
-    datasets,
+    magrittr,
     dplyr,
+    stringr,
+    labelled,
     glue,
     haven,
-    Hmisc,
-    labelled,
-    magrittr,
-    purrr,
-    stringr,
-    usethis
+    Hmisc
 Remotes:
     github::DesiQuintans/desiderata
-RoxygenNote: 7.2.2
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)

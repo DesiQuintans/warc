@@ -2,63 +2,63 @@
 
 
 # Run this function to build the iris_labelled dataset.
-make_iris_labelled_hmisc <- function() {
-    iris_labelled_hmisc <- datasets::iris
-
-    Hmisc::label(iris_labelled_hmisc$Sepal.Length) <- "Length of sepals."
-    Hmisc::label(iris_labelled_hmisc$Sepal.Width)  <- "Width of sepals."
-    Hmisc::label(iris_labelled_hmisc$Petal.Length) <- "Length of petals."
-    Hmisc::label(iris_labelled_hmisc$Petal.Width)  <- "Width of petals."
-    Hmisc::label(iris_labelled_hmisc$Species)      <-
-        paste("Species of iris:", paste(unique(datasets::iris$Species), collapse = ", "))
-
-    usethis::use_data(iris_labelled_hmisc, overwrite = TRUE)
-}
+# make_iris_labelled_hmisc <- function() {
+#     iris_labelled_hmisc <- datasets::iris
+#
+#     Hmisc::label(iris_labelled_hmisc$Sepal.Length) <- "Length of sepals."
+#     Hmisc::label(iris_labelled_hmisc$Sepal.Width)  <- "Width of sepals."
+#     Hmisc::label(iris_labelled_hmisc$Petal.Length) <- "Length of petals."
+#     Hmisc::label(iris_labelled_hmisc$Petal.Width)  <- "Width of petals."
+#     Hmisc::label(iris_labelled_hmisc$Species)      <-
+#         paste("Species of iris:", paste(unique(datasets::iris$Species), collapse = ", "))
+#
+#     usethis::use_data(iris_labelled_hmisc, overwrite = TRUE)
+# }
 
 # Same thing, but does the labelling with haven.
-make_iris_labelled_haven <- function() {
-    iris_labelled_haven <- datasets::iris
-
-    iris_labelled_haven$Sepal.Length  <-
-        haven::labelled(iris_labelled_haven$Sepal.Length,
-                        label = "Length of sepals.")
-
-    iris_labelled_haven$Sepal.Width <-
-        haven::labelled(iris_labelled_haven$Sepal.Width,
-                        label = "Width of sepals.")
-
-    iris_labelled_haven$Petal.Length <-
-        haven::labelled(iris_labelled_haven$Petal.Length,
-                        label = "Length of petals.")
-
-    iris_labelled_haven$Petal.Width <-
-        haven::labelled(iris_labelled_haven$Petal.Width,
-                        label = "Width of petals.")
-
-    iris_labelled_haven$Species <-
-        haven::labelled(iris_labelled_haven$Species,
-                        label = paste("Species of iris:",
-                                      paste(unique(datasets::iris$Species),
-                                            collapse = ", ")))
-
-    usethis::use_data(iris_labelled_haven, overwrite = TRUE)
-}
+# make_iris_labelled_haven <- function() {
+#     iris_labelled_haven <- datasets::iris
+#
+#     iris_labelled_haven$Sepal.Length  <-
+#         haven::labelled(iris_labelled_haven$Sepal.Length,
+#                         label = "Length of sepals.")
+#
+#     iris_labelled_haven$Sepal.Width <-
+#         haven::labelled(iris_labelled_haven$Sepal.Width,
+#                         label = "Width of sepals.")
+#
+#     iris_labelled_haven$Petal.Length <-
+#         haven::labelled(iris_labelled_haven$Petal.Length,
+#                         label = "Length of petals.")
+#
+#     iris_labelled_haven$Petal.Width <-
+#         haven::labelled(iris_labelled_haven$Petal.Width,
+#                         label = "Width of petals.")
+#
+#     iris_labelled_haven$Species <-
+#         haven::labelled(iris_labelled_haven$Species,
+#                         label = paste("Species of iris:",
+#                                       paste(unique(datasets::iris$Species),
+#                                             collapse = ", ")))
+#
+#     usethis::use_data(iris_labelled_haven, overwrite = TRUE)
+# }
 
 # Same thing, but does the labelling with labelled.
-make_iris_labelled_labelled <- function() {
-    iris_labelled_labelled <- datasets::iris
-
-    labelled::var_label(iris_labelled_labelled) <- list(
-        Sepal.Length = "Length of sepals.",
-        Sepal.Width = "Width of sepals.",
-        Petal.Length = "Length of petals.",
-        Petal.Width = "Width of petals.",
-        Species = paste("Species of iris:",
-                        paste(unique(iris_labelled_labelled$Species), collapse = ", "))
-    )
-
-    usethis::use_data(iris_labelled_labelled, overwrite = TRUE)
-}
+# make_iris_labelled_labelled <- function() {
+#     iris_labelled_labelled <- datasets::iris
+#
+#     labelled::var_label(iris_labelled_labelled) <- list(
+#         Sepal.Length = "Length of sepals.",
+#         Sepal.Width = "Width of sepals.",
+#         Petal.Length = "Length of petals.",
+#         Petal.Width = "Width of petals.",
+#         Species = paste("Species of iris:",
+#                         paste(unique(iris_labelled_labelled$Species), collapse = ", "))
+#     )
+#
+#     usethis::use_data(iris_labelled_labelled, overwrite = TRUE)
+# }
 
 
 #' The classic Iris dataset, labelled with 'Hmisc'
