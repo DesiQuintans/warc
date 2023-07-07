@@ -23,7 +23,7 @@
 #'
 #' report_setdiff(df1$hospital, df2$hospital)
 #' report_setdiff(df1$patient,  df2$patient_id)
-report_setdiff <- function(x, y, col) {
+report_setdiff <- function(x, y) {
     x_name <- deparse1(substitute(x))
     y_name <- deparse1(substitute(y))
 
