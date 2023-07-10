@@ -35,9 +35,9 @@ report_setdiff <- function(x, y) {
     y_not_in_x <- setdiff(x = y, y = x)
 
     if (setequal(x, y)) {
-        msg <- sprintf("# '%s' and '%s' are equal sets.", x_name, y_name)
+        msg <- sprintf("# %s and %s are equal sets.", x_name, y_name)
     } else {
-        msg_format <- sprintf("# '%%-%is' has %%-%ii values not in '%%s'.",
+        msg_format <- sprintf("# %%-%is has %%-%ii values not in %%s.",
                           max(nchar(c(x_name, y_name))),
                           max(nchar(c(length(x_not_in_y), length(y_not_in_x)))))
 
