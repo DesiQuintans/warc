@@ -2,9 +2,9 @@
 #' Report missingness of columns in a dataframe
 #'
 #' @param df (Dataframe) A dataframe.
-#' @param pattern (Character) A regular expression that will be used to select columns of `df`, passed to [agrep()].
+#' @param pattern (Character) A regular expression that will be used to select columns of `df`, passed to [grep()].
 #' @param ignore.case (Logical) If `TRUE` (default), ignore case when matching.
-#' @param ... (Dots) Other arguments that will be passed to [agrep()].
+#' @param ... (Dots) Other arguments that will be passed to [grep()].
 #'
 #' @return Prints to the console.
 #' @export
@@ -14,7 +14,7 @@
 #' report_missingness(iris, "length$")  # Ends with "length"
 #' report_missingness(iris, ".")        # Matches anything (returns all cols)
 report_missingness <- function(df, pattern, ignore.case = TRUE, ...) {
-    out_names <- agrep(pattern = pattern,
+    out_names <- grep(pattern = pattern,
                        x = colnames(df),
                        ignore.case = ignore.case,
                        value = TRUE,
