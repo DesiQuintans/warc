@@ -23,7 +23,7 @@ report_dims <- function(x, y) {
     name_width <-
     num_width <- max(nchar(c(dx, dy, dd)))
 
-    msg_format <- sprintf("%%%is \t %%%is \t %%%is",
+    msg_format <- sprintf("# %%%is \t %%%is \t %%%is",
                           max(nchar(c(x_df, y_df, "Difference"))),
                           max(nchar(c(dx[1], dy[1], dd[1], "Rows"))),
                           max(nchar(c(dx[2], dy[2], dd[2], "Cols"))))
