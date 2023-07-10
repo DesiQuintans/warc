@@ -4,12 +4,14 @@
 \alias{report_missingness}
 \title{Report missingness of columns in a dataframe}
 \usage{
-report_missingness(df, pattern, ...)
+report_missingness(df, pattern, ignore.case = TRUE, ...)
 }
 \arguments{
 \item{df}{(Dataframe) A dataframe.}
 
 \item{pattern}{(Character) A regular expression that will be used to select columns of \code{df}, passed to \code{\link[=agrep]{agrep()}}.}
+
+\item{ignore.case}{(Logical) If \code{TRUE} (default), ignore case when matching.}
 
 \item{...}{(Dots) Other arguments that will be passed to \code{\link[=agrep]{agrep()}}.}
 }
@@ -20,6 +22,7 @@ Prints to the console.
 Report missingness of columns in a dataframe
 }
 \examples{
-report_missingness(iris, "^Petal")
-report_missingness(iris, "Length$")
+report_missingness(iris, "^petal")   # Starts with "petal"
+report_missingness(iris, "length$")  # Ends with "length"
+report_missingness(iris, ".")        # Matches anything (returns all cols)
 }
